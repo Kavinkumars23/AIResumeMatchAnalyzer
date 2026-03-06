@@ -1,0 +1,6 @@
+@AIResumeMatchAnalyzer_HostAddress = http://localhost:5028
+
+GET {{AIResumeMatchAnalyzer_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

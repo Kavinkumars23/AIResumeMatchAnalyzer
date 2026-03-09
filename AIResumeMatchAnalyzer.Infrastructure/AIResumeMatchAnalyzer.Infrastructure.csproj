@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\AIResumeMatchAnalyzer.Application\AIResumeMatchAnalyzer.Application.csproj" />
+  </ItemGroup>
+
 </Project>

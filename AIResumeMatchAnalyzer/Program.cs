@@ -1,12 +1,35 @@
+using AIResumeMatchAnalyzer.Application.Interfaces;
+using AIResumeMatchAnalyzer.Application.Services;
+using AIResumeMatchAnalyzer.Infrastructure.FileProcessing;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
 
+// Swagger and OpenAi
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
+//Application Services
+builder.Services.AddScoped<IResumeAnalysisService, ResumeAnalysisService>();
+
+builder.Services.AddScoped<IResumeTextExtractor, ResumeTextExtractor>();
+
+builder.Services.AddScoped<IFileTextExtractor, TxtResumeExtractor>();
+builder.Services.AddScoped<IFileTextExtractor, PdfResumeExtractor>();
+builder.Services.AddScoped<IFileTextExtractor, DocxResumeExtractor>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
+
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
 
 app.UseHttpsRedirection();
 

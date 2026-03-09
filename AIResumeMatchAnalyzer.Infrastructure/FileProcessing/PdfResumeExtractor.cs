@@ -1,19 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using UglyToad.PdfPig;
 
-namespace AIResumeMatchAnalyzer.Infrastructure.FileProcessing
+namespace AIResumeMatchAnalyzer.Infrastructure.FileProcessing;
+
+public class PdfResumeExtractor : IFileTextExtractor
 {
-    public class PdfResumeExtractor : IFileTextExtractor
-    {
-        public bool CanHandle(string fileExtension)
-       => fileExtension.Equals(".pdf", StringComparison.OrdinalIgnoreCase);
+    public bool CanHandle(string fileExtension)
+        => fileExtension.Equals(".pdf", StringComparison.OrdinalIgnoreCase);
 
-        public Task<string> ExtractTextAsync(Stream fileStream)
+    public Task<string> ExtractTextAsync(Stream fileStream)
+    {
+        using var document = PdfDocument.Open(fileStream);
+
+        var text = string.Empty;
+
+        foreach (var page in document.GetPages())
         {
-            throw new NotImplementedException("PDF extraction not implemented yet.");
+            text += page.Text;
         }
+
+        return Task.FromResult(text);
     }
 }

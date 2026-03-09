@@ -1,5 +1,6 @@
 using AIResumeMatchAnalyzer.Application.Interfaces;
 using AIResumeMatchAnalyzer.Application.Services;
+using AIResumeMatchAnalyzer.Infrastructure.AIIntegration;
 using AIResumeMatchAnalyzer.Infrastructure.FileProcessing;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -20,6 +21,8 @@ builder.Services.AddScoped<IResumeTextExtractor, ResumeTextExtractor>();
 builder.Services.AddScoped<IFileTextExtractor, TxtResumeExtractor>();
 builder.Services.AddScoped<IFileTextExtractor, PdfResumeExtractor>();
 builder.Services.AddScoped<IFileTextExtractor, DocxResumeExtractor>();
+
+builder.Services.AddScoped<IAiAnalysisService, FakeAiAnalysisService>();
 
 var app = builder.Build();
 

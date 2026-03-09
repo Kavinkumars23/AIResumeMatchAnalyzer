@@ -7,7 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="10.1.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AIResumeMatchAnalyzer.Application\AIResumeMatchAnalyzer.Application.csproj" />
+    <ProjectReference Include="..\AIResumeMatchAnalyzer.Infrastructure\AIResumeMatchAnalyzer.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

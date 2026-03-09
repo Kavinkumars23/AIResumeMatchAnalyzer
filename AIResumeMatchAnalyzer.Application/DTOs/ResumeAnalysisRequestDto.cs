@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Http;
 
-namespace AIResumeMatchAnalyzer.Application.DTOs
+namespace AIResumeMatchAnalyzer.Application.DTOs;
+
+public class ResumeAnalysisRequestDto
 {
-    internal class ResumeAnalysisRequestDto
-    {
-    }
+    public IFormFile ResumeFile { get; set; } = default!;
+
+    public string JobDescription { get; set; } = string.Empty;
 }

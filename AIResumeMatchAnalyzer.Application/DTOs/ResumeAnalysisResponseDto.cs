@@ -1,12 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace AIResumeMatchAnalyzer.Application.DTOs;
 
-namespace AIResumeMatchAnalyzer.Application.DTOs
+public class ResumeAnalysisResponseDto
 {
-    internal class ResumeAnalysisResponseDto
-    {
-    }
+    public int MatchScore { get; set; }
+
+    public List<string> MatchedSkills { get; set; } = new();
+
+    public List<string> MissingSkills { get; set; } = new();
+
+    public List<string> Strengths { get; set; } = new();
+
+    public List<string> Improvements { get; set; } = new();
+
+    public string FinalVerdict { get; set; } = string.Empty;
 }

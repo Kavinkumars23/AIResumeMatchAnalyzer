@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace AIResumeMatchAnalyzer.Application.Interfaces
 {
-    internal interface IResumeTextExtractor
+    public interface IResumeTextExtractor
     {
+        Task<string> ExtractTextAsync(string filename, Stream fileStream);
     }
 }

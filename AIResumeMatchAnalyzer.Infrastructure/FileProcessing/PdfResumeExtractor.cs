@@ -6,7 +6,14 @@ using System.Threading.Tasks;
 
 namespace AIResumeMatchAnalyzer.Infrastructure.FileProcessing
 {
-    internal class PdfResumeExtractor
+    public class PdfResumeExtractor : IFileTextExtractor
     {
+        public bool CanHandle(string fileExtension)
+       => fileExtension.Equals(".pdf", StringComparison.OrdinalIgnoreCase);
+
+        public Task<string> ExtractTextAsync(Stream fileStream)
+        {
+            throw new NotImplementedException("PDF extraction not implemented yet.");
+        }
     }
 }

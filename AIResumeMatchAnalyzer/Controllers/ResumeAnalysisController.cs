@@ -1,5 +1,6 @@
 ﻿using AIResumeMatchAnalyzer.Application.DTOs;
 using AIResumeMatchAnalyzer.Application.Interfaces;
+using AIResumeMatchAnalyzer.Infrastructure.FileProcessing;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AIResumeMatchAnalyzer.Controllers;
@@ -21,29 +22,25 @@ public class ResumeAnalysisController : ControllerBase
     {
         try
         {
+            if (request.ResumeFile != null)
+            {
+                FileValidationHelper.Validate(request.ResumeFile.FileName, request.ResumeFile.Length);
+            }
+
             var result = await _resumeAnalysisService.AnalyzeAsync(request);
             return Ok(result);
         }
         catch (ArgumentException ex)
         {
-            return BadRequest(new
-            {
-                message = ex.Message
-            });
+            return BadRequest(new { message = ex.Message });
         }
         catch (NotSupportedException ex)
         {
-            return BadRequest(new
-            {
-                message = ex.Message
-            });
+            return BadRequest(new { message = ex.Message });
         }
         catch (InvalidOperationException ex)
         {
-            return BadRequest(new
-            {
-                message = ex.Message
-            });
+            return BadRequest(new { message = ex.Message });
         }
         catch (Exception ex)
         {

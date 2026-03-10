@@ -15,4 +15,8 @@
     <ProjectReference Include="..\AIResumeMatchAnalyzer.Infrastructure\AIResumeMatchAnalyzer.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Configuration\" />
+  </ItemGroup>
+
 </Project>
